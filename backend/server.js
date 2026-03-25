@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 const YTDlpWrap = require('yt-dlp-wrap').default;
+const ffmpegStatic = require('ffmpeg-static');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -183,6 +184,9 @@ app.get('/api/download', async (req, res) => {
     res.setHeader('Transfer-Encoding', 'chunked');
 
     const args = [];
+    
+    // Ffmpeg manzili (video va audio larni birlashtirish yoki mp3 ga konvertatsiya qilish uchun)
+    args.push('--ffmpeg-location', ffmpegStatic);
 
     if (isMP3 === 'true') {
       args.push(
