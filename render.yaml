@@ -1,6 +1,7 @@
 services:
   # Backend — Node.js API
   - type: web
+      plan: free
     name: yt-downloader-backend
     runtime: node
     rootDir: backend
