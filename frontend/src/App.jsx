@@ -40,9 +40,14 @@ function App() {
               <div className="text-xs text-gray-500 leading-none">Video Yuklovchi</div>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-xs text-gray-500">
-            <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse inline-block" />
-            Bepul & Tez
+          <div className="flex items-center gap-4 text-xs">
+            <div className="hidden sm:block text-gray-400 font-medium">
+              Created by <span className="text-red-400">khalimovvs</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-500">
+              <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse inline-block" />
+              Bepul & Tez
+            </div>
           </div>
         </header>
 
