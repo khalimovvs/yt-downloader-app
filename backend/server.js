@@ -74,7 +74,12 @@ app.get('/api/info', async (req, res) => {
   }
 
   try {
-    const metadata = await ytDlp.getVideoInfo(url);
+    const cookiesPath = path.join(__dirname, 'cookies.txt');
+    const getInfoArgs = [url];
+    if (fs.existsSync(cookiesPath)) {
+      getInfoArgs.push('--cookies', cookiesPath);
+    }
+    const metadata = await ytDlp.getVideoInfo(getInfoArgs);
 
     const videoFormats = [];
     const audioFormats = [];
@@ -191,6 +196,12 @@ app.get('/api/download', async (req, res) => {
 
     // Bot qulflarini aylanib o'tish (YouTube ni chalg'itish uchun mijozni televizor (TV) qilib ko'rsatamiz)
     args.push('--extractor-args', 'youtube:player_client=tv');
+
+    // Foydalanuvchi kiritgan Cookies faylidan foydalanamiz
+    const cookiesPath = path.join(__dirname, 'cookies.txt');
+    if (fs.existsSync(cookiesPath)) {
+      args.push('--cookies', cookiesPath);
+    }
 
     if (isMP3 === 'true') {
       args.push(
