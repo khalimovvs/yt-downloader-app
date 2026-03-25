@@ -189,6 +189,9 @@ app.get('/api/download', async (req, res) => {
     // Ffmpeg manzili (video va audio larni birlashtirish yoki mp3 ga konvertatsiya qilish uchun)
     args.push('--ffmpeg-location', ffmpegStatic);
 
+    // Bot qulflarini aylanib o'tish (YouTube ni chalg'itish uchun mijozni Android qilib ko'rsatamiz)
+    args.push('--extractor-args', 'youtube:player_client=android');
+
     if (isMP3 === 'true') {
       args.push(
         url,
